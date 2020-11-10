@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Author;
 use App\Models\Poem;
+use App\Models\Stanza;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,10 @@ class DatabaseSeeder extends Seeder
             ->has(
                 Poem::factory()
                     ->count(rand(5, 15))
+                    ->has(
+                        Stanza::factory()
+                            ->count(rand(1, 5))
+                    )
             )
             ->create();
     }
