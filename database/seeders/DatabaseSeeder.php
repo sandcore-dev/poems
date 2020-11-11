@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\Line;
 use App\Models\Poem;
 use App\Models\Stanza;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()
+            ->state([
+                'email' => 'webmaster@localhost',
+            ])
+            ->create();
+
         Author::factory()
             ->count(25)
             ->has(
