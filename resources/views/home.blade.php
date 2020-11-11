@@ -18,5 +18,17 @@
         </div>
     </div>
 
+    <nav>
+        @guest
+            <a href="{{ route('login') }}">
+                @lang('Login')
+            </a>
+        @else
+            <a href="{{ route('dashboard') }}">
+                @lang('Dashboard')
+            </a>
+        @endguest
+    </nav>
+
     </body>
 </html>
