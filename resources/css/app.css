@@ -29,7 +29,3 @@ body {
 .poem footer {
     @apply mt-10;
 }
-
-nav {
-    @apply absolute top-0 right-0 p-4;
-}
