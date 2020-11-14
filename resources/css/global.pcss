@@ -1,0 +1,32 @@
+@import '../fonts/Roboto/Roboto-Regular.css';
+
+body {
+    @apply bg-gray-900 text-white text-xl;
+    font-family: Roboto-Regular, sans-serif;
+}
+
+.centered-content {
+    @apply grid grid-cols-1 h-screen place-content-center;
+
+    & div {
+        @apply text-center;
+    }
+}
+
+.poem {
+    & header {
+        @apply mb-12;
+
+        & h1 {
+            @apply text-2xl;
+        }
+    }
+
+    & .stanza {
+        @apply my-4 leading-relaxed;
+    }
+
+    & footer {
+        @apply mt-10;
+    }
+}
