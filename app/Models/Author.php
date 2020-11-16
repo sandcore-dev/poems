@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read Poem[]|Collection poems
  * @property-read string full_name
  * @property-read string full_name_with_years
+ * @method static int count()
  */
 class Author extends Model
 {

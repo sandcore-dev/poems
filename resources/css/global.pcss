@@ -1,8 +1,16 @@
 @import '../fonts/Roboto/Roboto-Regular.css';
 
 body {
-    @apply bg-gray-900 text-white text-xl;
+    @apply bg-gray-900 text-white text-xl antialiased;
     font-family: Roboto-Regular, sans-serif;
+}
+
+.btn {
+    @apply bg-blue-600 text-white py-1 px-3 mx-1 rounded;
+
+    &:hover {
+        @apply bg-blue-700 text-gray-300;
+    }
 }
 
 .centered-content {
@@ -28,5 +36,57 @@ body {
 
     & footer {
         @apply mt-10;
+    }
+}
+
+.navbar {
+    @apply absolute inset-x-0 top-0;
+
+    & nav {
+        @apply bg-blue-900 px-2 py-4 transition-opacity duration-500 ease-in-out opacity-0;
+
+        &:hover {
+            @apply transition-opacity duration-500 ease-in-out opacity-100;
+        }
+    }
+
+    &.show nav {
+        @apply opacity-100;
+    }
+}
+
+.form {
+    @apply w-full max-w-sm mx-auto bg-blue-900 px-6 pt-4 pb-2 rounded;
+
+    & div {
+        @apply mb-4 text-left;
+
+        & label, & input, & select, & textarea, & div.error {
+            @apply appearance-none w-full block rounded px-2 py-1;
+        }
+
+        & input, & select, & textarea {
+            @apply bg-gray-300 text-black leading-tight;
+        }
+
+        & button {
+            @apply btn;
+        }
+
+        &.buttons {
+            @apply mt-8 flex items-center justify-between;
+        }
+
+        & div.error {
+            @apply text-sm text-red-500;
+        }
+    }
+}
+
+.count {
+    @apply w-full max-w-sm mx-auto bg-blue-900 px-4 py-4 rounded;
+
+    & header {
+        @apply font-semibold text-6xl leading-tight;
     }
 }
