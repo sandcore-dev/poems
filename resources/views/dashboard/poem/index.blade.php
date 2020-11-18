@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="container mx-auto mt-4">
-        <h1>@lang('Authors')</h1>
+        <h1>@lang('Poems by :name', ['name' => $author->full_name])</h1>
 
-        {{ $authors->links() }}
+        <div class="text-center">
+            <a class="btn" href="{{ route('dashboard.author.index') }}">
+                @lang('Back to index')
+            </a>
+        </div>
+
+        {{ $poems->links() }}
 
         <table class="table-results">
             <thead>
@@ -13,22 +19,22 @@
                     @lang('Name')
                 </th>
                 <th>
-                    <a href="{{ route('dashboard.author.create') }}">
+                    <a href="{{ route('dashboard.poem.create', ['author' => $author]) }}">
                         <span class="fa fa-plus"></span>
                     </a>
                 </th>
             </tr>
             </thead>
             <tbody>
-            @forelse($authors as $author)
+            @forelse($poems as $poem)
                 <tr>
                     <td>
-                        <a href="{{ route('dashboard.poem.index', ['author' => $author]) }}">
-                            {{ $author->alphabetical_full_name }}
+                        <a href="{{ route('dashboard.poem.show', ['author' => $author, 'poem' => $poem]) }}">
+                            {{ $poem->title }}
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('dashboard.author.edit', ['author' => $author]) }}">
+                        <a href="{{ route('dashboard.poem.edit', ['author' => $author, 'poem' => $poem]) }}">
                             <span class="fa fa-edit"></span>
                         </a>
                     </td>
@@ -36,14 +42,14 @@
             @empty
                 <tr>
                     <td colspan="2">
-                        @lang('No authors found')
+                        @lang('No poems found')
                     </td>
                 </tr>
             @endforelse
             </tbody>
         </table>
 
-        {{ $authors->links() }}
+        {{ $poems->links() }}
     </div>
 @endsection
 
