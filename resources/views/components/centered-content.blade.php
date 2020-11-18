@@ -1,5 +1,3 @@
 <div class="centered-content">
-    <div>
-        {{ $slot }}
-    </div>
+    {{ $slot }}
 </div>

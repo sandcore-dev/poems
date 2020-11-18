@@ -1,12 +1,18 @@
 @import '../fonts/Roboto/Roboto-Regular.css';
 
 body {
-    @apply bg-gray-900 text-white text-xl antialiased;
+    @apply bg-gray-900 text-white text-xl antialiased relative w-screen h-screen;
     font-family: Roboto-Regular, sans-serif;
 }
 
+a {
+    &:hover {
+        @apply text-blue-500;
+    }
+}
+
 .btn {
-    @apply bg-blue-600 text-white py-1 px-3 mx-1 rounded;
+    @apply inline-block bg-blue-600 text-white py-1 px-3 mx-1 rounded;
 
     &:hover {
         @apply bg-blue-700 text-gray-300;
@@ -14,14 +20,12 @@ body {
 }
 
 .centered-content {
-    @apply grid grid-cols-1 h-screen place-content-center;
-
-    & div {
-        @apply text-center;
-    }
+    @apply flex justify-center items-center h-full;
 }
 
 .poem {
+    @apply text-center mb-24;
+
     & header {
         @apply mb-12;
 
@@ -40,10 +44,8 @@ body {
 }
 
 .navbar {
-    @apply absolute inset-x-0 top-0;
-
     & nav {
-        @apply bg-blue-900 px-2 py-4 transition-opacity duration-500 ease-in-out opacity-0;
+        @apply bg-blue-900 px-2 py-3 transition-opacity duration-500 ease-in-out opacity-0;
 
         &:hover {
             @apply transition-opacity duration-500 ease-in-out opacity-100;
@@ -56,13 +58,11 @@ body {
 }
 
 .form {
-    @apply w-full max-w-sm mx-auto bg-blue-900 px-6 pt-4 pb-2 rounded;
-
     & div {
         @apply mb-4 text-left;
 
         & label, & input, & select, & textarea, & div.error {
-            @apply appearance-none w-full block rounded px-2 py-1;
+            @apply appearance-none w-full inline-block rounded px-2 py-1;
         }
 
         & input, & select, & textarea {
@@ -81,6 +81,30 @@ body {
             @apply text-sm text-red-500;
         }
     }
+
+    &.form-block {
+        @apply w-full max-w-sm mx-auto bg-blue-900 px-6 pt-4 pb-2 rounded;
+    }
+
+    &.form-inline {
+        @apply inline-block;
+
+        & div {
+            @apply inline-block mb-0;
+
+            &.buttons {
+                @apply mt-0 !important;
+            }
+        }
+
+        & label, & div.error {
+            @apply px-0 py-0;
+        }
+
+        & input, & select, & textarea {
+            @apply text-lg;
+        }
+    }
 }
 
 .count {
@@ -88,5 +112,27 @@ body {
 
     & header {
         @apply font-semibold text-6xl leading-tight;
+    }
+}
+
+.table-results {
+    @apply w-full table-auto text-left mt-4 mb-6;
+
+    & th, & td {
+        @apply px-2 py-1;
+
+        &:nth-child(2) {
+            @apply text-center;
+        }
+    }
+
+    & tbody tr {
+        &:nth-child(2n+1) {
+            @apply bg-blue-900;
+        }
+
+        &:hover {
+            @apply bg-blue-800;
+        }
     }
 }

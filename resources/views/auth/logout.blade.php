@@ -3,7 +3,7 @@
 @section('content')
     <x-centered-content>
         <div>
-            <form class="form" action="{{ route('confirmed') }}" method="post">
+            <form class="form form-block" action="{{ route('confirmed') }}" method="post">
                 @csrf
                 <div>
                     <label>

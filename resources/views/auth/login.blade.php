@@ -2,7 +2,7 @@
 
 @section('content')
     <x-centered-content>
-            <form class="form" action="{{ route('authenticate') }}" method="post">
+            <form class="form form-block" action="{{ route('authenticate') }}" method="post">
                 @csrf
                 <div>
                     <label for="email">

@@ -2,7 +2,7 @@
 
 @section('content')
     <x-centered-content>
-        <div class="grid md:grid-cols-2 gap-2 w-full max-w-xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-2 w-full max-w-xl mx-auto text-center">
             <div class="count">
                 <header>
                     @number($authors)

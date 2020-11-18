@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,14 +35,41 @@ class Author extends Model
         'slug',
     ];
 
+    protected static function booted()
+    {
+        static::addGlobalScope('name', function (Builder $query) {
+            $query
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->orderBy('middle_names');
+        });
+    }
+
     public function poems(): HasMany
     {
         return $this->hasMany(Poem::class);
     }
 
+    public function scopeSearch(Builder $query, ?string $search): Builder
+    {
+        if (empty($search)) {
+            return $query;
+        }
+
+        return $query
+            ->orWhere('first_name', 'like', "%{$search}%")
+            ->orWhere('middle_names', 'like', "%{$search}%")
+            ->orWhere('last_name', 'like', "%{$search}%");
+    }
+
+    public function getAlphabeticalFullNameAttribute(): string
+    {
+        return "{$this->last_name}, {$this->first_name} {$this->middle_names}";
+    }
+
     public function getFullNameAttribute(): string
     {
-        return "{$this->first_name} {$this->last_name}";
+        return "{$this->first_name} {$this->middle_names} {$this->last_name}";
     }
 
     public function getFullNameWithYearsAttribute(): string

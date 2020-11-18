@@ -12,13 +12,18 @@
 </head>
 <body>
 
-@yield('content')
-
-@guest
-    <x-nav-bar/>
-@else
-    <x-nav-bar show/>
-@endguest
+<div class="flex flex-col w-screen h-screen">
+    <div class="flex-initial">
+        @guest
+            <x-nav-bar/>
+        @else
+            <x-nav-bar show/>
+        @endguest
+    </div>
+    <div class="flex-grow">
+        @yield('content')
+    </div>
+</div>
 
 </body>
 </html>

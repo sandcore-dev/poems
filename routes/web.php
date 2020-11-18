@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,6 @@ Route::middleware('auth:sanctum')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('index');
+
+        Route::resource('/author', AuthorController::class);
     });

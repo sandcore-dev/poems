@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('number', function ($number) {
-            return "<?php echo app(\\NumberFormatter::class, [config('app.locale'), \\NumberFormatter::DECIMAL])->format($number); ?>";
+            return "<?php echo (new \\NumberFormatter(config('app.locale'), \\NumberFormatter::DECIMAL))->format({$number}); ?>";
         });
     }
 }
