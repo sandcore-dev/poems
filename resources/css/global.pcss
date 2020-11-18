@@ -5,6 +5,30 @@ body {
     font-family: Roboto-Regular, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    @apply text-center mb-4 !important;
+}
+
+h1 {
+    @apply text-5xl !important;
+}
+
+h2 {
+    @apply text-4xl !important;
+}
+
+h3 {
+    @apply text-3xl !important;
+}
+
+h4 {
+    @apply text-2xl !important;
+}
+
+h5 {
+    @apply text-xl !important;
+}
+
 a {
     &:hover {
         @apply text-blue-500;
@@ -62,7 +86,7 @@ a {
         @apply mb-4 text-left;
 
         & label, & input, & select, & textarea, & div.error {
-            @apply appearance-none w-full inline-block rounded px-2 py-1;
+            @apply appearance-none w-full inline-block rounded px-2 py-1 h-10;
         }
 
         & input, & select, & textarea {

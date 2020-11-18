@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
+ * @property int id
  * @property string title
  * @property string first_name
  * @property string middle_names
@@ -33,6 +34,13 @@ class Author extends Model
         'birth_year',
         'deceased_year',
         'slug',
+    ];
+
+    protected $casts = [
+        'title' => 'string',
+        'first_name' => 'string',
+        'middle_names' => 'string',
+        'last_name' => 'string',
     ];
 
     protected static function booted()

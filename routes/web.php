@@ -39,5 +39,6 @@ Route::middleware('auth:sanctum')
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('index');
 
-        Route::resource('/author', AuthorController::class);
+        Route::resource('/author', AuthorController::class)
+            ->except(['show', 'destroy']);
     });

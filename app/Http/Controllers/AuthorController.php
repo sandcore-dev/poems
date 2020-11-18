@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Rules\UniqueAuthorFullName;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AuthorController extends Controller
 {
@@ -30,66 +33,107 @@ class AuthorController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Renderable
      */
     public function create()
     {
-        //
+        return view('dashboard.author.form')->with([
+            'action' => route('dashboard.author.store'),
+            'author' => new Author(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'title' => ['present', 'string', Rule::in(config('poems.title.options'))],
+            'first_name' => ['required', 'string'],
+            'middle_names' => ['present', 'string'],
+            'last_name' => ['required', 'string', new UniqueAuthorFullName($request)],
+            'birth_year' => ['nullable', 'date_format:Y'],
+            'deceased_year' => ['nullable', 'date_format:Y'],
+            'slug' => ['nullable', 'string', Rule::unique('authors', 'slug')],
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Author $author)
-    {
-        //
+        $this->castInputToString($request);
+
+        $author = Author::create($request->only([
+            'title',
+            'first_name',
+            'middle_names',
+            'last_name',
+            'birth_year',
+            'deceased_year',
+            'slug',
+        ]));
+
+        return redirect()->route('dashboard.poems.index', ['author' => $author]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Author $author
+     * @return Renderable
      */
     public function edit(Author $author)
     {
-        //
+        return view('dashboard.author.form')->with([
+            'action' => route('dashboard.author.update', ['author' => $author]),
+            'method' => 'PUT',
+            'header' => __("Edit author ':name'", ['name'  => $author->full_name]),
+            'author' => $author,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Author $author
+     * @return RedirectResponse
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $request->validate([
+            'title' => ['nullable', 'string', Rule::in(config('poems.title.options'))],
+            'first_name' => ['required', 'string'],
+            'middle_names' => ['nullable', 'string'],
+            'last_name' => ['required', 'string', (new UniqueAuthorFullName($request))->ignore($author)],
+            'birth_year' => ['nullable', 'date_format:Y'],
+            'deceased_year' => ['nullable', 'date_format:Y'],
+            'slug' => ['nullable', 'string', Rule::unique('authors', 'slug')->ignore($author)],
+        ]);
+
+        $this->castInputToString($request);
+
+        $author->update($request->only([
+            'title',
+            'first_name',
+            'middle_names',
+            'last_name',
+            'birth_year',
+            'deceased_year',
+            'slug',
+        ]));
+
+        return redirect()->route('dashboard.poems.index', ['author' => $author]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Author $author)
+    protected function castInputToString(Request $request)
     {
-        //
+        foreach(['title', 'middle_names'] as $field) {
+            if ($request->isNotFilled($field)) {
+                $request->replace([
+                    $field => '',
+                ]);
+            }
+        }
     }
 }
