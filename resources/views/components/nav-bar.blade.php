@@ -11,7 +11,7 @@
                     <a class="btn" href="{{ route('dashboard.index') }}">@lang('Dashboard')</a>
                 </div>
                 <div class="text-center">
-                    <x-author-search-form/>
+                    <x-author-search-form :autofocus="$searchFormAutofocus"></x-author-search-form>
                 </div>
                 <div class="text-right">
                     <a class="btn" href="{{ route('logout') }}">@lang('Logout')</a>

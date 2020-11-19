@@ -22,6 +22,7 @@ class DashboardController extends Controller
             'poems' => Poem::count(),
             'stanzas' => Stanza::count(),
             'lines' => Line::count(),
+            'autofocus' => true,
         ]);
     }
 }

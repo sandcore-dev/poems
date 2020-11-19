@@ -19,7 +19,8 @@ class CreateStanzasTable extends Migration
             $table->unsignedInteger('order');
             $table->timestamps();
 
-            $table->foreign('poem_id')->references('id')->on('poems');
+            $table->foreign('poem_id')->references('id')->on('poems')
+                ->onDelete('CASCADE');;
         });
     }
 

@@ -2,24 +2,27 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 
 class AuthorSearchForm extends Component
 {
+    public $autofocus = false;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param bool $autofocus
      */
-    public function __construct()
+    public function __construct(bool $autofocus = false)
     {
-        //
+        $this->autofocus = $autofocus;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return Renderable
      */
     public function render()
     {

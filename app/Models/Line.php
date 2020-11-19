@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static int count()
+ * @property string content
  */
 class Line extends Model
 {

@@ -12,12 +12,12 @@
 </head>
 <body>
 
-<div class="flex flex-col w-screen h-screen">
+<div class="flex flex-col w-full h-full">
     <div class="flex-initial">
         @guest
-            <x-nav-bar/>
+            <x-nav-bar></x-nav-bar>
         @else
-            <x-nav-bar show/>
+            <x-nav-bar show :search-form-autofocus="$autofocus ?? false"></x-nav-bar>
         @endguest
     </div>
     <div class="flex-grow">

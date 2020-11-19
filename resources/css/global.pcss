@@ -47,6 +47,14 @@ a {
     @apply flex justify-center items-center h-full;
 }
 
+.min-h-25 {
+    min-height: 25vh !important;
+}
+
+.min-h-50 {
+    min-height: 50vh !important;
+}
+
 .poem {
     @apply text-center mb-24;
 
@@ -91,6 +99,10 @@ a {
 
         & input, & select, & textarea {
             @apply bg-gray-300 text-black leading-tight;
+        }
+
+        & textarea {
+            @apply min-h-25;
         }
 
         & button {

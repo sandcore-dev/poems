@@ -21,7 +21,8 @@ class CreateLinesTable extends Migration
             $table->unsignedInteger('order');
             $table->timestamps();
 
-            $table->foreign('stanza_id')->references('id')->on('stanzas');
+            $table->foreign('stanza_id')->references('id')->on('stanzas')
+                ->onDelete('CASCADE');
         });
     }
 
