@@ -119,7 +119,6 @@
                     id="slug"
                     name="slug"
                     value="{{ old('slug', $author->slug) }}"
-                    maxlength="4"
                 />
                 @error('slug')
                 <div class="error">

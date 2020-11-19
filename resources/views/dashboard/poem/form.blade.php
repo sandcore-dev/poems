@@ -18,7 +18,6 @@
                         id="title"
                         name="title"
                         value="{{ old('title', $poem->title) }}"
-                        maxlength="4"
                         autofocus
                     />
                     @error('title')
@@ -36,7 +35,6 @@
                         id="slug"
                         name="slug"
                         value="{{ old('slug', $poem->slug) }}"
-                        maxlength="4"
                     />
                     @error('slug')
                     <div class="error">

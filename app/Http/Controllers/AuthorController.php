@@ -52,9 +52,9 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['present', 'string', Rule::in(config('poems.title.options'))],
+            'title' => ['nullable', 'string', Rule::in(config('poems.title.options'))],
             'first_name' => ['required', 'string'],
-            'middle_names' => ['present', 'string'],
+            'middle_names' => ['nullable', 'string'],
             'last_name' => ['required', 'string', new UniqueAuthorFullName($request)],
             'birth_year' => ['nullable', 'date_format:Y'],
             'deceased_year' => ['nullable', 'date_format:Y'],
@@ -73,7 +73,7 @@ class AuthorController extends Controller
             'slug',
         ]));
 
-        return redirect()->route('dashboard.poems.index', ['author' => $author]);
+        return redirect()->route('dashboard.poem.index', ['author' => $author]);
     }
 
     /**
@@ -123,14 +123,14 @@ class AuthorController extends Controller
             'slug',
         ]));
 
-        return redirect()->route('dashboard.poems.index', ['author' => $author]);
+        return redirect()->route('dashboard.poem.index', ['author' => $author]);
     }
 
     protected function castInputToString(Request $request)
     {
         foreach(['title', 'middle_names'] as $field) {
             if ($request->isNotFilled($field)) {
-                $request->replace([
+                $request->merge([
                     $field => '',
                 ]);
             }
