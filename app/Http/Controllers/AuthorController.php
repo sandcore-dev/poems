@@ -27,6 +27,7 @@ class AuthorController extends Controller
 
         return view('dashboard.author.index')->with([
             'authors' => $authors,
+            'autofocus' => true,
         ]);
     }
 

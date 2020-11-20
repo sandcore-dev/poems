@@ -4,11 +4,9 @@
     </header>
     <div class="contents">
         @foreach($poem->stanzas as $stanza)
-            <p class="stanza">
-                @foreach($stanza->lines as $line)
-                    {{ $line->content }}<br>
-                @endforeach
-            </p>
+            <div class="stanza">
+                @parsedown($stanza->text)
+            </div>
         @endforeach
     </div>
     <footer>
