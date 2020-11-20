@@ -5,8 +5,12 @@ html, body {
 }
 
 body {
-    @apply bg-gray-900 text-white text-xl antialiased relative;
+    @apply bg-gray-900 text-white text-sm antialiased relative;
     font-family: Roboto-Regular, sans-serif;
+
+    @screen md {
+        @apply text-xl;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -14,23 +18,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    @apply text-5xl !important;
-}
-
-h2 {
-    @apply text-4xl !important;
-}
-
-h3 {
     @apply text-3xl !important;
 }
 
-h4 {
+h2 {
     @apply text-2xl !important;
 }
 
-h5 {
+h3 {
     @apply text-xl !important;
+}
+
+h4 {
+    @apply text-base !important;
+}
+
+h5 {
+    @apply text-sm !important;
 }
 
 a {
@@ -64,10 +68,6 @@ a {
 
     & header {
         @apply mb-12;
-
-        & h1 {
-            @apply text-2xl;
-        }
     }
 
     & .stanza {
