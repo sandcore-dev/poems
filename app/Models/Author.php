@@ -9,18 +9,40 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property int id
- * @property string title
- * @property string first_name
- * @property string middle_names
- * @property string last_name
- * @property int birth_year
- * @property int deceased_year
- * @property string slug
- * @property-read Poem[]|Collection poems
- * @property-read string full_name
- * @property-read string full_name_with_years
- * @method static int count()
+ * App\Models\Author
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $first_name
+ * @property string $middle_names
+ * @property string $last_name
+ * @property string|null $birth_year
+ * @property string|null $deceased_year
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $alphabetical_full_name
+ * @property-read string $full_name
+ * @property-read string $full_name_with_years
+ * @property-read Collection|\App\Models\Poem[] $poems
+ * @property-read int|null $poems_count
+ * @method static Builder|Author newModelQuery()
+ * @method static Builder|Author newQuery()
+ * @method static Builder|Author query()
+ * @method static Builder|Author search($search)
+ * @method static Builder|Author whereBirthYear($value)
+ * @method static Builder|Author whereCreatedAt($value)
+ * @method static Builder|Author whereDeceasedYear($value)
+ * @method static Builder|Author whereFirstName($value)
+ * @method static Builder|Author whereId($value)
+ * @method static Builder|Author whereLastName($value)
+ * @method static Builder|Author whereMiddleNames($value)
+ * @method static Builder|Author whereSlug($value)
+ * @method static Builder|Author whereTitle($value)
+ * @method static Builder|Author whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Author extends Model
 {

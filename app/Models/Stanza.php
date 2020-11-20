@@ -11,9 +11,28 @@ use Illuminate\Support\Str;
 use RuntimeException;
 
 /**
- * @method static int count()
- * @property-read HasMany|Collection|Line[]
- * @property-read string text
+ * App\Models\Stanza
+ *
+ * @property int $id
+ * @property int $poem_id
+ * @property int $order
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $text
+ * @property-read Collection|\App\Models\Line[] $lines
+ * @property-read int|null $lines_count
+ * @property-read \App\Models\Poem $poem
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza wherePoemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Stanza whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Stanza extends Model
 {

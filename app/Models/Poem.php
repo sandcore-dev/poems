@@ -11,9 +11,30 @@ use Illuminate\Support\Str;
 use RuntimeException;
 
 /**
- * @method static int count()
- * @property-read HasMany|Collection|Stanza[] stanzas
- * @property-read string text
+ * App\Models\Poem
+ *
+ * @property int $id
+ * @property int $author_id
+ * @property string $title
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Author $author
+ * @property-read string $text
+ * @property-read Collection|\App\Models\Stanza[] $stanzas
+ * @property-read int|null $stanzas_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereAuthorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Poem whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Poem extends Model
 {
