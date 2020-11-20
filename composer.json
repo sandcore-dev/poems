@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "sandcore-dev/poems",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Poems repository.",
     "keywords": [
         "framework",
         "laravel"
@@ -34,6 +34,9 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
         }
     },
     "autoload": {
