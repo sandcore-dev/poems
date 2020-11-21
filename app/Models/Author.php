@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Author
  *
  * @property int $id
+ * @property int|null $language_id
  * @property string $title
  * @property string $first_name
  * @property string $middle_names
@@ -24,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read string $alphabetical_full_name
  * @property-read string $full_name
  * @property-read string $full_name_with_years
+ * @property-read \App\Models\Language|null $language
  * @property-read Collection|\App\Models\Poem[] $poems
  * @property-read int|null $poems_count
  * @method static Builder|Author newModelQuery()
@@ -35,6 +38,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Author whereDeceasedYear($value)
  * @method static Builder|Author whereFirstName($value)
  * @method static Builder|Author whereId($value)
+ * @method static Builder|Author whereLanguageId($value)
  * @method static Builder|Author whereLastName($value)
  * @method static Builder|Author whereMiddleNames($value)
  * @method static Builder|Author whereSlug($value)
@@ -49,6 +53,7 @@ class Author extends Model
     use HasFactory;
 
     protected $fillable = [
+        'language_id',
         'title',
         'first_name',
         'middle_names',
@@ -73,6 +78,12 @@ class Author extends Model
                 ->orderBy('first_name')
                 ->orderBy('middle_names');
         });
+    }
+
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class)
+            ->withDefault();
     }
 
     public function poems(): HasMany

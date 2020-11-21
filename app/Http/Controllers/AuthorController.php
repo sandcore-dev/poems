@@ -67,11 +67,13 @@ class AuthorController extends Controller
             'birth_year' => ['nullable', 'date_format:Y'],
             'deceased_year' => ['nullable', 'date_format:Y'],
             'slug' => ['nullable', 'string', Rule::unique('authors', 'slug')],
+            'language_id' => ['nullable', 'integer', 'exists:languages,id'],
         ]);
 
         $this->castInputToString($request);
 
         $author = Author::create($request->only([
+            'language_id',
             'title',
             'first_name',
             'middle_names',
@@ -111,6 +113,7 @@ class AuthorController extends Controller
     public function update(Request $request, Author $author)
     {
         $request->validate([
+            'language_id' => ['nullable', 'integer', 'exists:languages,id'],
             'title' => ['nullable', 'string', Rule::in(config('poems.title.options'))],
             'first_name' => ['required', 'string'],
             'middle_names' => ['nullable', 'string'],
@@ -123,6 +126,7 @@ class AuthorController extends Controller
         $this->castInputToString($request);
 
         $author->update($request->only([
+            'language_id',
             'title',
             'first_name',
             'middle_names',

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use WhiteCube\Lingua\Service as Lingua;
 
@@ -14,6 +15,8 @@ use WhiteCube\Lingua\Service as Lingua;
  * @property string $code
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Author[] $authors
+ * @property-read int|null $authors_count
  * @property-read string $name
  * @method static \Illuminate\Database\Eloquent\Builder|Language newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Language newQuery()
@@ -24,12 +27,18 @@ use WhiteCube\Lingua\Service as Lingua;
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
  * @mixin \Eloquent
  * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 class Language extends Model
 {
     use HasFactory;
 
     protected $fillable = ['code'];
+
+    public function authors(): HasMany
+    {
+        return $this->hasMany(Author::class);
+    }
 
     public function getNameAttribute(): string
     {

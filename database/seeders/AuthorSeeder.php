@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Author;
+use App\Models\Language;
 use App\Models\Line;
 use App\Models\Poem;
 use App\Models\Stanza;
@@ -19,6 +20,7 @@ class AuthorSeeder extends Seeder
     {
         Author::factory()
             ->count(25)
+            ->for(Language::factory())
             ->has(
                 Poem::factory()
                     ->count(rand(5, 15))

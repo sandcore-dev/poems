@@ -126,6 +126,7 @@
                 </div>
                 @enderror
             </div>
+            <x-language-select :label="__('Primary language')" :language-id="$author->language->id"></x-language-select>
             <div class="buttons">
                 <button type="submit">
                     @lang(isset($method) && $method === 'PUT' ? 'Edit' : 'Add')
