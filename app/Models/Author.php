@@ -99,7 +99,26 @@ class Author extends Model
 
     public function getFullNameAttribute(): string
     {
-        return "{$this->first_name} {$this->middle_names} {$this->last_name}";
+        $fullName = [];
+
+        if(in_array($this->title, config('poems.title.before_first_name'))) {
+            $fullName[] = $this->title;
+        }
+
+        $fullName[] = $this->first_name;
+
+        if ($this->middle_names) {
+            $fullName[] = $this->middle_names;
+        }
+
+        if(in_array($this->title, config('poems.title.before_last_name'))) {
+            $fullName[count($fullName) - 1] .= ',';
+            $fullName[] = $this->title;
+        }
+
+        $fullName[] = $this->last_name;
+
+        return implode(' ', $fullName);
     }
 
     public function getFullNameWithYearsAttribute(): string

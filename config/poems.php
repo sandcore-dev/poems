@@ -2,12 +2,20 @@
 
 return [
     'title' => [
+        'before_first_name' => [
+            'Dame',
+            'Sir',
+        ],
+        'before_last_name' => [
+            'Lady',
+            'Lord',
+        ],
         'options' => [
             '',
-            'Lord',
-            'Lady',
-            'Sir',
             'Dame',
+            'Lady',
+            'Lord',
+            'Sir',
         ],
     ]
 ];
