@@ -9,6 +9,7 @@
                 <div>
                     <a class="btn" href="{{ route('home') }}">@lang('Home')</a>
                     <a class="btn" href="{{ route('dashboard.index') }}">@lang('Dashboard')</a>
+                    <a class="btn" href="{{ route('dashboard.language.index') }}">@lang('Languages')</a>
                 </div>
                 <div class="text-center">
                     <x-author-search-form :autofocus="$searchFormAutofocus"></x-author-search-form>

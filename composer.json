@@ -16,7 +16,8 @@
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.5",
-        "parsedown/laravel": "^1.2"
+        "parsedown/laravel": "^1.2",
+        "whitecube/lingua": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",

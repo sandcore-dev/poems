@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PoemController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::middleware('auth:sanctum')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])
             ->name('index');
+
+        Route::resource('/language', LanguageController::class)
+            ->except(['show', 'edit', 'update', 'destroy']);
 
         Route::resource('/author', AuthorController::class)
             ->except(['show', 'destroy']);
