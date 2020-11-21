@@ -81,6 +81,7 @@ class PoemController extends Controller
     public function show(Author $author, Poem $poem)
     {
         return view('dashboard.poem.show')->with([
+            'title' => "{$poem->title} - {$poem->author->full_name_with_years}",
             'author' => $author,
             'poem' => $poem,
         ]);
