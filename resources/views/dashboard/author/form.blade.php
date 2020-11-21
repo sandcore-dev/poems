@@ -5,9 +5,9 @@
         <form class="form" action="{{ $action }}" method="post">
             @csrf
             @method($method ?? 'POST')
-            <h1>
-                @lang($header ?? 'Add author')
-            </h1>
+
+            <h1>{{ $title }}</h1>
+
             <div class="grid grid-flow-col auto-cols-auto">
                 <div class="mr-2">
                     <label for="title">

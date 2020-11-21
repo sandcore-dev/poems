@@ -18,6 +18,7 @@ class DashboardController extends Controller
     public function index(): Renderable
     {
         return view('dashboard.index')->with([
+            'title' => __('Dashboard'),
             'authors' => Author::count(),
             'poems' => Poem::count(),
             'stanzas' => Stanza::count(),

@@ -11,7 +11,9 @@ class AuthController extends Controller
 {
     public function login(): Renderable
     {
-        return view('auth.login');
+        return view('auth.login')->with([
+            'title' => __('Login'),
+        ]);
     }
 
     public function authenticate(Request $request): RedirectResponse
@@ -34,7 +36,9 @@ class AuthController extends Controller
 
     public function logout(): Renderable
     {
-        return view('auth.logout');
+        return view('auth.logout')->with([
+            'title' => __('Logout'),
+        ]);
     }
 
     public function confirmed(): RedirectResponse

@@ -26,6 +26,7 @@ class PoemController extends Controller
         $author->loadMissing('poems');
 
         return view('dashboard.poem.index')->with([
+            'title' => __('Poems by :name', ['name' => $author->full_name]),
             'author' => $author,
             'poems' => $author->poems()->paginate(),
         ]);
@@ -40,6 +41,7 @@ class PoemController extends Controller
     public function create(Author $author)
     {
         return view('dashboard.poem.form')->with([
+            'title' => __('Add poem by :name', ['name' => $author->full_name]),
             'action' => route('dashboard.poem.store', ['author' => $author]),
             'author' => $author,
             'poem' => new Poem(),
@@ -92,6 +94,7 @@ class PoemController extends Controller
     public function edit(Author $author, Poem $poem)
     {
         return view('dashboard.poem.form')->with([
+            'title' => __('Edit poem by :name', ['name' => $author->full_name]),
             'action' => route('dashboard.poem.update', ['author' => $author, 'poem' => $poem]),
             'method' => 'PUT',
             'author' => $author,

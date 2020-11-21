@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
+    <title>
+        @empty($title)
+            {{ config('app.name') }}
+        @else
+            {{ $title }} | {{ config('app.name') }}
+        @endempty
+    </title>
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}"/>
 

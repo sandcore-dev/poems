@@ -5,9 +5,9 @@
         <form class="form" action="{{ $action }}" method="post">
             @csrf
             @method($method ?? 'POST')
-            <h1>
-                @lang($header ?? 'Add poem by :name', ['name' => $author->full_name])
-            </h1>
+
+            <h1>{{ $title }}</h1>
+
             <div class="grid grid-flow-col auto-cols-auto gap-2">
                 <div>
                     <label for="title">

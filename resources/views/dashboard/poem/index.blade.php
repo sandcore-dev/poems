@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto mt-4">
-        <h1>@lang('Poems by :name', ['name' => $author->full_name])</h1>
+        <h1>{{ $title }}</h1>
 
         <div class="text-center">
             <a class="btn" href="{{ route('dashboard.author.index') }}">

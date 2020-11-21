@@ -37,7 +37,7 @@ Route::middleware('auth:sanctum')
     ->as('dashboard.')
     ->prefix('/dashboard')
     ->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])
+        Route::get('/', [DashboardController::class, 'index'])
             ->name('index');
 
         Route::resource('/author', AuthorController::class)

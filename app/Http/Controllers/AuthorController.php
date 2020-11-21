@@ -31,6 +31,7 @@ class AuthorController extends Controller
             ->appends(['search' => $search]);
 
         return view('dashboard.author.index')->with([
+            'title' => __('Authors'),
             'authors' => $authors,
             'autofocus' => true,
         ]);
@@ -44,6 +45,7 @@ class AuthorController extends Controller
     public function create()
     {
         return view('dashboard.author.form')->with([
+            'title' => __('Add author'),
             'action' => route('dashboard.author.store'),
             'author' => new Author(),
         ]);
@@ -91,6 +93,7 @@ class AuthorController extends Controller
     public function edit(Author $author)
     {
         return view('dashboard.author.form')->with([
+            'title' => __('Edit author - :name', ['name' => $author->full_name]),
             'action' => route('dashboard.author.update', ['author' => $author]),
             'method' => 'PUT',
             'header' => __("Edit author ':name'", ['name'  => $author->full_name]),
