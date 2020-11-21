@@ -56,7 +56,11 @@ class Poem extends Model
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class)
-            ->withDefault($this->author->language->toArray());
+            ->withDefault(function (Language $language, Poem $poem) {
+                $language->fill(
+                    $poem->author->language->toArray()
+                );
+            });
     }
 
     public function stanzas(): HasMany

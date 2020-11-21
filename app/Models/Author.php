@@ -83,7 +83,9 @@ class Author extends Model
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class)
-            ->withDefault();
+            ->withDefault([
+                'code' => config('app.locale'),
+            ]);
     }
 
     public function poems(): HasMany
