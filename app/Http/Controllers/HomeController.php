@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         return view('home')
             ->with([
-                'title' => "{$poem->title} - {$poem->author->full_name}",
+                'title' => "{$poem->title} - {$poem->author->full_name_with_years}",
                 'poem' => $poem,
             ]);
     }

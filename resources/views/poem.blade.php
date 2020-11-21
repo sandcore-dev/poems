@@ -11,7 +11,7 @@
     </div>
     <footer>
         <address>
-            {{ $poem->author->full_name_with_years }}
+            {{ $poem->author->full_name }}
         </address>
     </footer>
 </article>
