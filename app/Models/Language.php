@@ -40,6 +40,11 @@ class Language extends Model
         return $this->hasMany(Author::class);
     }
 
+    public function poems(): HasMany
+    {
+        return $this->hasMany(Poem::class);
+    }
+
     public function getNameAttribute(): string
     {
         return Str::ucfirst(Lingua::createFromW3C($this->code)->toName());

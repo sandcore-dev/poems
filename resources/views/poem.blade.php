@@ -1,4 +1,4 @@
-<article class="poem">
+<article class="poem" lang="{{ $poem->language->code }}">
     <header>
         <h1 class="title">{{ $poem->title }}</h1>
     </header>

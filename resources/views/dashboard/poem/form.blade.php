@@ -8,24 +8,24 @@
 
             <h1>{{ $title }}</h1>
 
-            <div class="grid grid-flow-col auto-cols-auto gap-2">
-                <div>
-                    <label for="title">
-                        @lang('Title')
-                    </label>
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        value="{{ old('title', $poem->title) }}"
-                        autofocus
-                    />
-                    @error('title')
-                    <div class="error">
-                        {{ $message }}
-                    </div>
-                    @enderror
+            <div>
+                <label for="title">
+                    @lang('Title')
+                </label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value="{{ old('title', $poem->title) }}"
+                    autofocus
+                />
+                @error('title')
+                <div class="error">
+                    {{ $message }}
                 </div>
+                @enderror
+            </div>
+            <div class="grid grid-flow-col auto-cols-auto gap-2">
                 <div>
                     <label for="slug">
                         @lang('Slug')
@@ -42,7 +42,8 @@
                     </div>
                     @enderror
                 </div>
-            </div>
+                <x-language-select :language-id="$poem->language->id"></x-language-select>
+           </div>
             <div>
                 <label for="text">
                     @lang('Text')

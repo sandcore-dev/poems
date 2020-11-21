@@ -41,6 +41,7 @@ class Poem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'language_id',
         'author_id',
         'title',
         'slug',
@@ -48,7 +49,14 @@ class Poem extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Author::class)
+            ->withDefault();
+    }
+
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class)
+            ->withDefault($this->author->language);
     }
 
     public function stanzas(): HasMany

@@ -44,7 +44,7 @@ class PoemController extends Controller
             'title' => __('Add poem by :name', ['name' => $author->full_name]),
             'action' => route('dashboard.poem.store', ['author' => $author]),
             'author' => $author,
-            'poem' => new Poem(),
+            'poem' => $author->poems()->make(),
         ]);
     }
 
@@ -60,11 +60,12 @@ class PoemController extends Controller
         $request->validate([
             'title' => ['required', 'string'],
             'slug' => ['required', 'string'],
+            'language_id' => ['nullable', 'integer', 'exists:languages,id'],
             'text' => ['required', 'string'],
         ]);
 
         /** @var Poem $poem */
-        $poem = $author->poems()->create($request->only('title', 'slug'));
+        $poem = $author->poems()->create($request->only('title', 'slug', 'language_id'));
         $poem->saveText($request->input('text'));
 
         return redirect()->route('dashboard.poem.show', ['author' => $author, 'poem' => $poem]);
@@ -114,10 +115,11 @@ class PoemController extends Controller
         $request->validate([
             'title' => ['required', 'string'],
             'slug' => ['required', 'string'],
+            'language_id' => ['nullable', 'integer', 'exists:languages,id'],
             'text' => ['required', 'string'],
         ]);
 
-        $poem->update($request->only('title', 'slug'));
+        $poem->update($request->only('title', 'slug', 'language_id'));
         $poem->saveText($request->input('text'));
 
         return redirect()->route('dashboard.poem.show', ['author' => $author, 'poem' => $poem]);
