@@ -10,17 +10,17 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21.1",
+        "axios": "^0.21.4",
         "cross-env": "^7.0.3",
-        "laravel-mix": "^6.0.19",
+        "laravel-mix": "^6.0.31",
         "lodash": "^4.17.19",
-        "postcss": "^8.3.2",
+        "postcss": "^8.3.8",
         "postcss-nesting": "^8.0.1",
-        "resolve-url-loader": "^2.3.2",
+        "resolve-url-loader": "^4.0.0",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.2",
-        "tailwindcss": "^2.1.2"
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "tailwindcss": "^2.2.16"
     }
 }
