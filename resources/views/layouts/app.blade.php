@@ -12,9 +12,7 @@
         @endempty
     </title>
 
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}"/>
-
-    <script defer src="{{ mix('/js/app.js') }}"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
