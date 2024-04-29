@@ -1,12 +1,12 @@
 export default {
     plugins: {
+        'tailwindcss/nesting': {},
         tailwindcss: {
-            purge: [
+            content: [
                 './resources/**/*.{php,vue}',
             ],
         },
         autoprefixer: {},
-        'postcss-nesting': {},
         cssnano: {},
     },
 };

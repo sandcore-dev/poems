@@ -1,4 +1,4 @@
-@import '@fontsource/roboto/400.css';
+@import '@fontsource/open-sans/400.css';
 
 html, body {
     @apply w-full h-full;
@@ -6,7 +6,7 @@ html, body {
 
 body {
     @apply bg-gray-900 text-white text-sm antialiased relative;
-    font-family: Roboto, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
     @screen md {
         @apply text-xl;
