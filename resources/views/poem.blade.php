@@ -5,7 +5,7 @@
     <div class="contents">
         @foreach($poem->stanzas as $stanza)
             <div class="stanza">
-                @parsedown($stanza->text)
+                @markdown($stanza->text)
             </div>
         @endforeach
     </div>

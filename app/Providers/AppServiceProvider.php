@@ -27,5 +27,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('number', function ($number) {
             return "<?php echo (new \\NumberFormatter(config('app.locale'), \\NumberFormatter::DECIMAL))->format({$number}); ?>";
         });
+
+        Blade::directive('markdown', function ($text) {
+            return <<<PHP
+<?php echo nl2br(\\Illuminate\\Support\\Str::of($text)->markdown(['html_input' => 'strip'])); ?>
+PHP;
+        });
     }
 }
